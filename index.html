@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIST</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .completed { background-color: #d4edda; }
+        .info-box {
+        background-color: #e5e5e5; /* Серый фон */
+        padding: 10px;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #1f3b63; /* Темно-синий текст */
+    }
+
+    .info-box p {
+        margin: 5px 0;
+    }
+
+    .info-box strong {
+        font-size: 14px; /* Размер текста для заголовков */
+    }
+    .save-button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;}
+    body {
+      padding-bottom: 100px; /* или больше, в зависимости от контента */
+    }
+
+    </style>
+</head>
+<body>
+    <div class="info-box">
+        <p><strong>CLIENT:</strong><br>CARBON GAMING LLC</p>
+        <p><strong>PROJECT LOCATION:</strong><br>Dubai, Meydan One, Aziz Riviera 23</p>
+    </div>
+
+
+    <table border="1">
+        <tr>
+        <th>№</th>
+        <th>DESCRIPTION OF WORKS</th>
+        <th>QTY</th>
+        <th>UNIT</th>
+        <th>%</th>
+    </tr>
+        <tr>
+            <th><strong>1</strong></th>
+            <th>PRELIMINARY WORKS</th> 
+            <th>144</th>
+            <th>SQM/Floor</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>1.1</th>
+            <th>Mobilization / demobilization, transportation for the personnel, materials and equipment</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>    
+        <tr>
+            <th>1.2</th>
+            <th>Installation of building supplies and equipment</th>
+            <th></th>
+            <th></th>
+            
+            <th></th>
+        </tr>
+        <tr>
+            <th>1.3</th>
+            <th>Construction waste removal and coordination with the municipality, payment of commissions</th>
+            <th></th>
+            <th></th>
+            
+            <th></th>
+        </tr>
+        <tr>
+            <th><strong>2</strong></th>
+            <th>AC WORKS</th> 
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>2.1</th>
+            <th>Supply & installation of chilled water FCU, 3.5Tons capacity</th>
+            <th>3</th>
+            <th>Nos.</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>2.2</th>
+            <th>Supply & fixing of PICV valve packages in the chilled water lines,</th>
+            <th>3</th>
+            <th>sets</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>2.3</th>
+            <th>Supply and fixing of chilled water pipe line in MS pipes from the existing branch provided</th>
+            <th>3</th>
+            <th>units</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>2.4</th>
+            <th>Pressure testing of supply & return chilled water pipe lines upto 16bar pressure</th>
+            <th>3</th>
+            <th>Nos.</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+            <th>2.5</th>
+            <th>Supply & fixing of aluminum grills/diffusers as per the drawings, white powder coated</th>
+            <th></th>
+            <th>lot</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>2.6</th>
+            <th>Supply & fixing of thermostats and its wiring between the units and the thermostats</th>
+            <th>3</th>
+            <th>Nos.</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>2.7</th>
+            <th>Testing and commissioning of units</th>
+            <th>3</th>
+            <th>Nos.</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>2.8</th>
+            <th>Flushing the chilled water line with Waterbird chemicals</th>
+            <th>1</th>
+            <th>System</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th><strong>3</strong></th>
+            <th>PLUMBING WORKS</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>3.1</th>
+            <th>Supply and installation of drainage D110mm pipes for SP - SOIL PIPE</th>
+            <th>2</th>
+            <th>points</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>3.2</th>
+            <th>Supply and installation of drainage D50-75mm pipes for WP - WASTE PIPE
+</th>
+<th>3</th>
+            <th>points</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>3.3</th>
+            <th>Supply and installation of cold-water supply pipes
+ </th>
+ <th>Line</th>
+            <th>Ls</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>3.4</th>
+            <th>Supply and installation assories 
+</th>
+<th></th>
+            <th>set</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>3.5</th>
+            <th>Supply and installation of wet area waterproofing with testing Kerakoll Italy MOS
+ </th>
+ <th>Area</th>
+            <th>Ls</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        
+        <tr>
+            <th><strong>4</strong></th>
+            <th>CONSTRUCTION WORK</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>4.1</th>
+            <th>Supply and erection of walls from GB KNAUF KW B112 sound insulation index 50-56 dB</th>
+            <th>110</th>
+            <th>SQM</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>4.2</th>
+            <th>Supply and painting of new walls</th>
+            <th>220</th>
+            <th>SQM</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>4.3</th>
+            <th>Supply and erection of ceiling from GB KNAUF CEILING KCB001 </th>
+            <th>7,6</th>
+            <th>SQM</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>4.4</th>
+            <th>Supply and painting of new ceiling</th>
+            <th>7,6</th>
+            <th>SQM</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>    
+        </tr>
+        <tr>
+            <th>4.5</th>
+            <th>Supply and installation skirtings for new walls</th>
+            <th>92</th>
+            <th>R/M</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>    
+        </tr>
+        <tr>
+            <th>4.6</th>
+            <th>Supply and installation of tempered glass doors 2,30*0,80m</th>
+            <th>4</th>
+            <th>Set</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>4.7</th>
+            <th>Supply and installation of MDF doors 2,30*0,80m</th>
+            <th>3</th>
+            <th>set</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>4.8</th>
+            <th>Supply and installation of MDF doors 2,30*0,90m</th>
+            <th>2</th>
+            <th>set</th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+                <tr>
+            <th><strong>5</strong></th>
+            <th>FLOORING WORK</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr> 
+        <tr>
+            <th>5.1</th>
+            <th>Application and finishing of up to 100mm thick rapid screed Material should be provided at the point of application. <br>
+-Fixing of Construction joint/profile by M.C <br>
+-Cleaning, Shutting, preparing the surface by M.C.</th>
+<th>144</th>
+            <th>SQM</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr> 
+        <tr>
+            <th>5.2</th>
+            <th>
+Application and finishing of up to 200mm thick rapid screed Material should be provided at the point of application. <br>
+-Fixing of Construction joint/profile by M.C <br>
+-Cleaning, Shutting, preparing the surface by M.C.
+
+            </th>
+<th>10</th>
+            <th>SQM</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr> 
+        <tr>
+            <th>5.3</th>
+            <th>Supply and installation of tiles with grouting. Kerakoll Italy MOS. Floor only </th>
+            <th>144</th>
+            <th>SQM</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr> 
+    </td>
+        <tr>
+            <th><strong>6</strong></th>
+            <th>ELECTRICAL POWER WORKS</th>
+            <th>1</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>6.1</th>
+            <th>Supply and assembly of electrical distribution board</th>
+            <th>1</th>
+            <th>unit</th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>6.2</th>
+            <th>Connecting the electrical DB distribution board to the meter</th>
+            <th>1</th>
+            <th>unit</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>6.3</th>
+            <th>Supply and wiring of power electric line on the ceiling in GI profile for distribution to points</th>
+            <th>ls</th>
+            <th></th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>6.4</th>
+            <th>Supply and wiring of power electrical line for sockets on the floor in PVC pipes for 47 points</th>
+            <th>ls</th>
+            <th></th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>6.5</th>
+            <th>Supply and wiring of power electrical line for sockets on walls in PVC pipes for 47 points</th>
+            <th>ls</th>
+            <th></th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>6.6</th>
+            <th>Supply and wiring of power electrical line for sockets on ceiling in PVC pipes for 3points</th>
+            <th>ls</th>
+            <th></th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>6.7</th>
+            <th>Supply and wiring of DATA line for RJ45 sockets on ceiling, wall and floor in PVC pipes for 28 points</th>
+            <th>ls</th>
+            <th></th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+            </tr>
+        <tr>
+            <th>6.8</th>
+            <th>Supply and installation isolator</th>
+            <th>3</th>
+            <th>pcs</th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        <tr>
+            <th>6.9</th>
+            <th>Supply and installation of 13A Twin socket</th>
+            <th>22</th>
+            <th>pcs</th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>6.10</th>
+            <th>Supply and installation of Floor box 13A Twin sockets & DATA point</th>
+            <th>25</th>
+            <th>pcs</th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>6.11</th>
+            <th>Supply and installation of data points for wall sockets</th>
+            <th>3</th>
+            <th>pcs</th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th><strong>7</strong></th>
+            <th>ELECTRICAL FURNITURE/WALL LIGHTING LIGHTING WORKS</th>    
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>7.1</th>
+            <th>Supply and wiring of lighting electric line on the ceiling in GI profile for distribution to points</th>
+            <th>ls</th>
+            <th></th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>7.2</th>
+            <th>Supply and wiring of lighting electrical line for wall lights on walls in PVC pipes for 19 points</th>
+            <th>ls</th>
+            <th></th>   
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>7.3</th>
+            <th>Installation of furniture/wall lights</th>
+            <th>19</th>
+            <th>points</th>    
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>7.4</th>
+            <th>Supply and wiring of lighting electrical line for LED lights on ceiling in PVC pipes for 18 points</th>
+            <th></th>
+            <th></th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>7.5</th>
+            <th>Installation of LED Linear lights</th>
+            <th>9</th>
+            <th>points</th>
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>7.6</th>
+            <th>Installation of LED down light</th>
+            <th>6</th>
+            <th>points</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>7.7</th>
+            <th>Installation of LED Strip light 3 points</th>
+            <th>18</th>
+            <th>R/M</th> 
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr>
+        <tr>
+            <th>7.8</th>
+            <th>Supply and installation of switches for lighting</th>
+            <th>3</th>
+            <th>points</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr> 
+        <tr>
+            <th><strong>8</strong></th>
+            <th>OTHER WORKS</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr> 
+        <tr>
+            <th>8.1</th>
+            <th>Supply and installation of a plasterboard reception desk</th>
+            <th>1</th>
+            <th>unit</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr> 
+        <tr>
+            <th>8.2</th>
+            <th>Supply and installation of IT cables for cameras (10 points), RJ45 for devices and WiFi (29points)</th>
+            <th>1500</th>
+            <th>R/M</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr> 
+        <tr>
+            <th>8.3</th>
+            <th>Supply and painting of Existing walls and ceiling </th>
+            <th>305</th>
+            <th>SQM</th>
+            
+            <th><input type="number" class="percent-input" min="0" max="100" value="0" oninput="calculateTotal()"></th>
+        </tr> 
+    </td>
+    </td>
+    </table>
+        
+    <p>
+    <strong>Number of works:</strong> <span id="total-jobs">0</span>
+    </p>
+    <p>
+    <strong>Total:</strong> <span id="total-percent">0</span>% 
+    </p>
+     
+    <p><button class="save-button no-pdf" onclick="saveData()">💾 Сохранить</button></p>
+    
+
+    <script>
+   function calculateTotal() {
+      let inputs = document.querySelectorAll('.percent-input');
+      let total = 0;
+      let count = 0;
+      let jobCount = 0;
+      inputs.forEach(input => {
+        let value = parseFloat(input.value);
+        if (!isNaN(value)) {
+          total += value;
+          count++;
+          jobCount++;
+        }
+      });
+      let average = count > 0 ? (total / count).toFixed(2) : 0;
+      document.getElementById('total-percent').innerText = average;
+      document.getElementById('total-jobs').textContent = jobCount;
+      localStorage.setItem('totalJobs', jobCount);
+    }
+
+    function saveData() {
+      let inputs = document.querySelectorAll('.percent-input');
+      let values = [];
+      inputs.forEach(input => {
+        values.push(input.value);
+      });
+      localStorage.setItem('percentValues', JSON.stringify(values));
+      localStorage.setItem('totalPercent', document.getElementById('total-percent').textContent);
+      alert("Сохранено!");
+    }
+
+    function loadData() {
+      let savedValues = JSON.parse(localStorage.getItem('percentValues'));
+      let savedTotal = localStorage.getItem('totalPercent');
+      let savedJobs = localStorage.getItem('totalJobs');
+      if (savedValues) {
+        let inputs = document.querySelectorAll('.percent-input');
+        inputs.forEach((input, index) => {
+          input.value = savedValues[index] || 0;
+        });
+      }
+      if (savedTotal) {
+        document.getElementById('total-percent').textContent = savedTotal;
+      }
+      if (savedJobs) {
+        document.getElementById('total-jobs').textContent = savedJobs;
+      }
+    }
+
+    window.onload = loadData;
+  </script>
+
+  <script>
+    emailjs.init("VB4XxK6jjsQUENSOA"); // Инициализируем EmailJS
+
+    function sendEmail() {
+      let rows = document.querySelectorAll("table tr");
+      let tableText = "";
+      rows.forEach((row, rowIndex) => {
+        let cols = row.querySelectorAll("td, th");
+        let rowData = [];
+        if (rowIndex === 0) return;
+        cols.forEach((col, index) => {
+          if (index === 0) {
+            rowData.push(col.innerText);
+          } else if (index === 1) {
+            rowData.push(col.innerText);
+          } else {
+            let input = col.querySelector("input.percent-input");
+            if (input) {
+              rowData.push(input.value + "%");
+            } else {
+              rowData.push("");
+            }
+          }
+        });
+        if (rowData.length > 0) {
+          tableText += rowData.join(" | ") + "\n";
+        }
+      });
+      let totalPercent = document.getElementById('total-percent') ? document.getElementById('total-percent').textContent : '0';
+      let totalJobs = document.getElementById('total-jobs') ? document.getElementById('total-jobs').textContent : '0';
+      tableText += `\nИтого: ${totalPercent}%\n`;
+      tableText += `Всего работ: ${totalJobs}\n`;
+      // Если понадобится, раскомментируйте отправку через EmailJS
+      // emailjs.send("service_m417yhp", "template_muub3fw", {
+      //   to_email: "razakovshoh7@gmail.com",
+      //   message_html: tableText
+      // }).then(function(response) {
+      //   alert("Таблица отправлена!");
+      // }, function(error) {
+      //   alert("Ошибка: " + JSON.stringify(error));
+      // });
+    }
+  </script>
+
+  <!-- Кнопка для скачивания PDF (скрываем в PDF) -->
+  <button class="save-button no-pdf" id="downloadPDF">📥PDF</button>
+
+  <script>
+    document.getElementById("downloadPDF").addEventListener("click", function () {
+      // Скрываем элементы с классом no-pdf (только кнопки)
+      var elementsToHide = document.querySelectorAll('.no-pdf');
+      elementsToHide.forEach(function (el) {
+        el.style.display = "none";
+      });
+      // Скрываем кнопку скачивания
+      var downloadButton = this;
+      downloadButton.style.display = "none";
+
+      // Ждём, чтобы браузер обновил отображение
+      setTimeout(() => {
+        html2canvas(document.body, { scale: 2 }).then(function (canvas) {
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF('p', 'mm', 'a4');
+          const pageWidth = pdf.internal.pageSize.getWidth();
+          const pageHeight = pdf.internal.pageSize.getHeight();
+
+          // Определяем высоту одного PDF-страницы в пикселях исходного canvas
+          const canvasPageHeight = (canvas.width * pageHeight) / pageWidth;
+          const totalPages = Math.ceil(canvas.height / canvasPageHeight);
+
+          for (let i = 0; i < totalPages; i++) {
+            // Создаём временный canvas для текущей страницы
+            const canvasPage = document.createElement("canvas");
+            canvasPage.width = canvas.width;
+            canvasPage.height = canvasPageHeight;
+            const ctx = canvasPage.getContext("2d");
+
+            // Рисуем часть основного canvas, соответствующую текущей странице
+            ctx.drawImage(
+              canvas,
+              0,
+              i * canvasPageHeight,
+              canvas.width,
+              canvasPageHeight,
+              0,
+              0,
+              canvas.width,
+              canvasPageHeight
+            );
+
+            const imgData = canvasPage.toDataURL("image/png");
+            if (i > 0) {
+              pdf.addPage();
+            }
+            // Вычисляем высоту изображения в PDF
+            const pdfImgHeight = (canvasPageHeight * pageWidth) / canvas.width;
+            pdf.addImage(imgData, 'PNG', 0, 0, pageWidth, pdfImgHeight);
+          }
+
+          pdf.save('site.pdf');
+
+          // Восстанавливаем ранее скрытые элементы
+          elementsToHide.forEach(function (el) {
+            el.style.display = "";
+          });
+          downloadButton.style.display = "block";
+        });
+      }, 100);
+    });
+  </script>
+</body>
+</html>
